@@ -2,6 +2,8 @@ package com.mirceatalu.graphql.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class User {
     @Id
@@ -11,8 +13,11 @@ public class User {
     @Column
     private String name;
 
-    @Column
+    @Column(unique = true)
     private String email;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Role> roles;
 
     public User() {
 

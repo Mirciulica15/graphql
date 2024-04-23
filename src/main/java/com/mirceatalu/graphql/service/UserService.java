@@ -1,6 +1,5 @@
 package com.mirceatalu.graphql.service;
 
-import com.mirceatalu.graphql.dto.UpdatedUserInput;
 import com.mirceatalu.graphql.dto.UserInput;
 import com.mirceatalu.graphql.entity.User;
 import com.mirceatalu.graphql.repository.UserRepository;
@@ -30,14 +29,14 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User updateUser(UpdatedUserInput updatedUserInput) {
-        User user = userRepository.findByEmail(updatedUserInput.email());
-        user.setName(updatedUserInput.name());
+    public User updateUser(UserInput userInput) {
+        User user = userRepository.findByEmail(userInput.email());
+        user.setName(userInput.name());
         return userRepository.save(user);
     }
 
-    public void deleteUser(UpdatedUserInput updatedUserInput) {
-        User user = userRepository.findByEmail(updatedUserInput.email());
+    public void deleteUser(UserInput userInput) {
+        User user = userRepository.findByEmail(userInput.email());
         userRepository.delete(user);
     }
 }

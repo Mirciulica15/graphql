@@ -1,12 +1,15 @@
 type Query {
     users: [User]
     userById(id: ID!): User
+    roles: [Role]
+    rolesByUser(userInput: UserInput): [Role]
 }
 
 type Mutation {
     addUser(userInput: UserInput): User
-    updateUser(updatedUserInput: UpdatedUserInput): User
-    deleteUser(deletedUserInput: UpdatedUserInput): ID
+    updateUser(userInput: UserInput): User
+    deleteUser(userInput: UserInput): ID
+    addRole(roleInput: RoleInput): Role
 }
 
 input UserInput {
@@ -14,13 +17,18 @@ input UserInput {
     email: String!
 }
 
-input UpdatedUserInput {
-    name: String
-    email: String!
+input RoleInput {
+    userInput: UserInput!
+    role: String!
 }
 
 type User {
     id: ID!
     name: String!
     email: String!
+}
+
+type Role {
+    user: User!
+    role: String!
 }

@@ -1,6 +1,5 @@
 package com.mirceatalu.graphql.controller;
 
-import com.mirceatalu.graphql.dto.UpdatedUserInput;
 import com.mirceatalu.graphql.dto.UserInput;
 import com.mirceatalu.graphql.entity.User;
 import com.mirceatalu.graphql.service.UserService;
@@ -35,12 +34,12 @@ public class UserController {
     }
 
     @MutationMapping
-    User updateUser(@Argument UpdatedUserInput updatedUserInput) {
-        return userService.updateUser(updatedUserInput);
+    User updateUser(@Argument UserInput userInput) {
+        return userService.updateUser(userInput);
     }
 
     @MutationMapping
-    void deleteUser(@Argument UpdatedUserInput deletedUserInput) {
-        userService.deleteUser(deletedUserInput);
+    void deleteUser(@Argument UserInput userInput) {
+        userService.deleteUser(userInput);
     }
 }

@@ -9,6 +9,7 @@ import com.mirceatalu.graphql.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoleService {
@@ -30,8 +31,13 @@ public class RoleService {
     }
 
     public Role addRole(RoleInput roleInput) {
-        User user = userRepository.findByEmail(roleInput.userInput().email());
-        Role role = new Role(user, roleInput.role());
-        return roleRepository.save(role);
+        Optional<User> userOptional = userRepository.findById(roleInput.userId());
+        if(userOptional.isPresent()) {
+            User user = userOptional.get();
+            Role role = new Role(user, roleInput.role());
+            return roleRepository.save(role);
+        } else {
+            throw new RuntimeException("User not found");
+        }
     }
 }

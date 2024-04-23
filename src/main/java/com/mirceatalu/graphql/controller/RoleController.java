@@ -32,5 +32,4 @@ public class RoleController {
         return roleService.addRole(roleInput);
     }
 
-
 }

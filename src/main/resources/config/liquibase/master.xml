@@ -9,4 +9,8 @@
 
     <include file="config/liquibase/changelogs/insert-roles.xml" relativeToChangelogFile="false" />
 
+    <include file="config/liquibase/changelogs/create-permission-table.xml" relativeToChangelogFile="false" />
+
+    <include file="config/liquibase/changelogs/insert-permissions.xml" relativeToChangelogFile="false" />
+
 </databaseChangeLog>

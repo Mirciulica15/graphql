@@ -3,6 +3,8 @@ type Query {
     userById(id: ID!): User
     roles: [Role]
     rolesByUser(userInput: UserInput): [Role]
+    permissions: [Permission]
+    permissionById(id: ID!): Permission
 }
 
 type Mutation {
@@ -10,6 +12,9 @@ type Mutation {
     updateUser(userInput: UserInput): User
     deleteUser(userInput: UserInput): ID
     addRole(roleInput: RoleInput): Role
+    addPermission(permissionInput: PermissionInput): Permission
+    updatePermission(permissionInput: PermissionInput): Permission
+    deletePermission(permissionInput: PermissionInput): ID
 }
 
 input UserInput {
@@ -22,6 +27,11 @@ input RoleInput {
     role: String!
 }
 
+input PermissionInput {
+    name: String!
+    description: String
+}
+
 type User {
     id: ID!
     name: String!
@@ -31,4 +41,10 @@ type User {
 type Role {
     user: User!
     role: String!
+}
+
+type Permission {
+    id: ID!
+    name: String!
+    description: String
 }

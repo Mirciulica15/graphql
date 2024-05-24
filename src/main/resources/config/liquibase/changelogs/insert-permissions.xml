@@ -1,0 +1,19 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet id="1.0.0" author="mirceatalu">
+        <insert tableName="permission">
+            <column name="name" value="Key Vault Secret Reader"/>
+            <column name="description" value="Can read Key Vault secrets"/>
+        </insert>
+
+        <insert tableName="permission">
+            <column name="name" value="Key Vault Secret Writer"/>
+            <column name="description" value="Can create Key Vault secrets"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
